@@ -1,0 +1,94 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #111;
+    color: #f1f1f1;
+}
+
+.scan {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.scan .fingerprint {
+    position: relative;
+    width: 400px;
+    height: 450px;
+    background-image: url(../img/deactivate-fingerprint.png);
+    background-size: 400px;
+}
+
+.scan .fingerprint::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/active-fingerprint.png);
+    overflow: hidden;
+    background-size: 400px;
+    animation: updown 4s ease-in-out infinite;
+}
+
+.scan .fingerprint::after {
+    content: "";
+    position: absolute;
+    inset: 20px;
+    width: calc(100% - 40px);
+    height: 2px;
+    background-color: #3ff0ea;
+    filter: drop-shadow(0 0 20px #3ff0ea) drop-shadow(0 0 60px #3ff0ea);
+    animation: updown-line 4s ease-in-out infinite alternate;
+}
+
+.text {
+    margin-top: 2rem;
+    animation: textAnimate 1s ease-in-out infinite;
+}
+
+@keyframes updown {
+
+    0%,
+    100% {
+        height: 20px;
+    }
+
+    50% {
+        height: calc(100% + 20px);
+    }
+}
+
+@keyframes textAnimate {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes updown-line {
+
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: calc(100% + 20px);
+    }
+}
